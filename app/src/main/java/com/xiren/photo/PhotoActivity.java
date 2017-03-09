@@ -165,8 +165,9 @@ public class PhotoActivity extends AppCompatActivity implements SurfaceHolder.Ca
             case R.id.iv_start:
                 //判断权限
                 if(isPermisson){return;}
-                CameraManager.getInstance().doTakePicture(pictureCallback);
-//                handleView(1);
+//                CameraManager.getInstance().doTakePicture(pictureCallback);
+                CameraManager.getInstance().stop();
+                handleView(1);
                 break;
             case R.id.iv_use:
                 break;
@@ -187,21 +188,21 @@ public class PhotoActivity extends AppCompatActivity implements SurfaceHolder.Ca
             if(data==null){
                 return;
             }
-            Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-            Matrix matrix=new Matrix();
-            //设置缩放
-            matrix.postScale(0.5f, 0.5f);
-            bitmap=Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-//            File file = new File(Environment.getExternalStorageDirectory(),
-//                    System.currentTimeMillis() + ".jpg");
-            try {
-                FileOutputStream outStream = new FileOutputStream(filePath);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
-                outStream.close();
-                camera.startPreview();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+//            Matrix matrix=new Matrix();
+//            //设置缩放
+//            matrix.postScale(0.5f, 0.5f);
+//            bitmap=Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+////            File file = new File(Environment.getExternalStorageDirectory(),
+////                    System.currentTimeMillis() + ".jpg");
+//            try {
+//                FileOutputStream outStream = new FileOutputStream(filePath);
+//                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
+//                outStream.close();
+//                camera.startPreview();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
 //            CameraManager.getInstance().stop();
         }
     };
